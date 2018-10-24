@@ -18,6 +18,6 @@ app.use('/api', graphHTTP({
   graphiql: true,
 }));
 
-const server = app.listen(8080, () => {
+const server = app.listen(3000, () => {
   console.log('Wedding API running on port', server.address().port);
 });

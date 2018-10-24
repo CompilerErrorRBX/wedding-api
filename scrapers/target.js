@@ -6,7 +6,7 @@ const scraper = async (source) => {
 
   const items = [];
 
-  setTimeout(() => {
+  setTimeout(async () => {
     await page.close(true);
     await browser.close();
   }, 10000);
