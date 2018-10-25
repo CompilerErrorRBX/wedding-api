@@ -19,7 +19,7 @@ fs
 db.registrySource.all().then((registries) => {
   for (let i = 0; i < registries.length; i++) {
     const registry = registries[i];
-    schedule.scheduleJob('*/1 * * * *', async () => {
+    schedule.scheduleJob('*/10 * * * *', async () => {
       const items = await scrapers[registry.store.toLowerCase()](registry.url);
       for (let j = 0; j < items.items.length; j++) {
         const item = items.items[j];
