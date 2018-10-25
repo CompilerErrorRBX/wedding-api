@@ -23,7 +23,6 @@ module.exports = {
         const rsvp = await context.db.rsvp.create(rsvpData);
         rsvps.push(rsvp);
       }
-      console.log(rsvps);
       return rsvps;
     },
   },
