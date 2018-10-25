@@ -8,7 +8,7 @@ const db = require('./db/models');
 const port = process.env.PORT || 3000;
 const host = process.env.HOST || 'localhost'
 
-require('./scrapers');
+// require('./scrapers');
 const schema = require('./api');
 
 server.use(cors());
