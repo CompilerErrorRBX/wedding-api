@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('registry-sources', {
+    return queryInterface.createTable('registrySources', {
       id: {
         allowNull: false,
         primaryKey: true,
@@ -17,9 +17,6 @@ module.exports = {
       url: {
         type: Sequelize.STRING,
         unique: true,
-      },
-      eventId: {
-        type: Sequelize.STRING(36),
       },
       createdAt: {
         allowNull: false,

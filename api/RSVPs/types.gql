@@ -1,0 +1,20 @@
+type RSVP {
+  id: String
+  confirmed: Boolean
+  fullName: String
+  groupId: String
+}
+
+type Query {
+  getRSVPs: [RSVP]
+}
+
+input RSVPGroupInput {
+  names: [String]
+  confirmed: Boolean
+}
+
+type Mutation {
+  addRSVP(fullName: String!, confirmed: Boolean!): RSVP
+  addGroupRSVP(rsvps: RSVPGroupInput!): [RSVP]
+}

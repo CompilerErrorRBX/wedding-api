@@ -1,23 +1,29 @@
-const app = require('express')();
-const graphHTTP = require('express-graphql');
+const server = require('express')();
+const { createServer } = require('http');
+const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const db = require('./db/models');
 
-const scrapers = require('./scrapers');
-const schema = require('./schemas');
+const port = process.env.PORT || 3000;
 
-app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: true
+// require('./scrapers');
+const schema = require('./api');
+
+server.use(cors());
+server.use(bodyParser.json());
+server.use(bodyParser.urlencoded({
+  extended: true,
 }));
 
-app.use('/api', graphHTTP({
-  schema,
-  pretty: true,
-  graphiql: true,
+server.use('/api', bodyParser.json(), graphqlExpress(req => ({ schema, context: { req, db } })));
+
+server.use('/ui', graphiqlExpress({
+  endpointURL: '/api',
 }));
 
-const server = app.listen(3000, () => {
-  console.log('Wedding API running on port', server.address().port);
+const ws = createServer(server);
+
+ws.listen(port, () => {
+  console.log(`Wedding API running at http://localhost:${port}/ui`);
 });

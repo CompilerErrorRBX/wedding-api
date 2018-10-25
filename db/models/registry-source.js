@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const registrySource = sequelize.define('registry-source', {
+  const registrySource = sequelize.define('registrySource', {
     id: {
       type: DataTypes.STRING(36),
       defaultValue: DataTypes.UUIDV4,
@@ -11,8 +11,11 @@ module.exports = (sequelize, DataTypes) => {
     url: DataTypes.STRING,
   }, {});
   registrySource.associate = (models) => {
-    registrySource.belongsTo(models.event, { as: 'event', foreignKey: 'eventId' });
-    registrySource.hasMany(models['registry-item'], { as: 'items', foreignKey: 'registrySourceId', targetKey: 'id' });
+    registrySource.hasMany(models['registryItem'], {
+      as: 'items',
+      foreignKey: 'registrySourceId',
+      targetKey: 'id'
+    });
   };
   return registrySource;
 };

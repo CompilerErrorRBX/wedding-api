@@ -1,0 +1,15 @@
+type RegistrySource {
+  id: String
+  url: String
+  title: String
+  store: String
+  items: [RegistryItem]
+}
+
+type Query {
+  getSources: [RegistrySource]
+}
+
+type Mutation {
+  addSource(url: String!, title: String!, store: String!): RegistrySource
+}

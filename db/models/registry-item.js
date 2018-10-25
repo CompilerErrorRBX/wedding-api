@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const registryItem = sequelize.define('registry-item', {
+  const registryItem = sequelize.define('registryItem', {
     id: {
       type: DataTypes.STRING(36),
       defaultValue: DataTypes.UUIDV4,
@@ -14,7 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     desiredQuantity: DataTypes.INTEGER,
   }, {});
   registryItem.associate = (models) => {
-    registryItem.belongsTo(models['registry-source'], { as: 'source', foreignKey: 'registrySourceId' });
+    registryItem.belongsTo(models['registrySource'], {
+      as: 'source',
+      foreignKey: 'registrySourceId'
+    });
   };
   return registryItem;
 };

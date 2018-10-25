@@ -1,0 +1,9 @@
+type RegistryItem {
+  id: String
+  url: String
+  thumbnail: String
+  name: String
+  price: String
+  quantity: Int
+  desiredQuantity: Int
+}

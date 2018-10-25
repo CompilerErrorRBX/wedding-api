@@ -1,14 +1,15 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var rsvp = sequelize.define('rsvp', {
-    id: {
-      type: DataTypes.STRING(36),
-      defaultValue: DataTypes.UUIDV4,
-      primaryKey: true,
+    fullName: {
+      type: DataTypes.STRING(128),
     },
-    confirmed: DataTypes.BOOLEAN,
-    fullName: DataTypes.STRING(128),
-    groupId: DataTypes.STRING(36),
+    confirmed: {
+      type: DataTypes.BOOLEAN,
+    },
+    groupId: {
+      type: DataTypes.UUID,
+    }
   }, {});
   rsvp.associate = function(models) {
     // associations can be defined here
