@@ -6,6 +6,7 @@ const cors = require('cors');
 const db = require('./db/models');
 
 const port = process.env.PORT || 3000;
+const host = process.env.HOST || 'localhost'
 
 // require('./scrapers');
 const schema = require('./api');
@@ -24,6 +25,6 @@ server.use('/ui', graphiqlExpress({
 
 const ws = createServer(server);
 
-ws.listen(port, () => {
-  console.log(`Wedding API running at http://localhost:${port}/ui`);
+ws.listen(port, host, () => {
+  console.log(`Wedding API running at http://${host}:${port}/ui`);
 });
